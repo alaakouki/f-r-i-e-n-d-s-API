@@ -21,7 +21,7 @@ const reactionSchema = new Schema (
        createdAt: {
         type: Date,
         default: Date.now,
-        get: createdAtVal => moment(createdAtVal).format("MMM DD, YYYY [at] hh:mm a"),
+        get: timeStamps => moment(timeStamps).format("MMM DD, YYYY [at] hh:mm a"),
        },
     },
     {
@@ -45,7 +45,7 @@ const thoughtSchema = new Schema(
     createdAt: {
         type: Date,
         default: Date.now,
-        get: createdAtVal => moment(createdAtVal).format("MMM DD, YYYY [at] hh:mm a"),
+        get: timeStamps => moment(timeStamps).format("MMM DD, YYYY [at] hh:mm a"),
     },
     username: {
         type: String, required: true,
@@ -60,8 +60,8 @@ const thoughtSchema = new Schema(
 }
 );
 
-thoughtSchema.virtual(reactionCount).get({
-    return this. reactions.length;
+thoughtSchema.virtual(reactionCount).get(function () {
+    return this.reactions.length;
 });
 
 const Thought = model("thought", thoughtSchema);
