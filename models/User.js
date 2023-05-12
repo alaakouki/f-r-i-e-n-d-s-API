@@ -43,7 +43,7 @@ ref: "User",
 );
 
 // Create a virtual property `fullName` that gets and sets the user's full name
-userSchema.virtual(friendCount)
+userSchema.virtual("friendCount")
   // Getter
   .get(function () {
     return this.friends.length;
